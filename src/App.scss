@@ -18,4 +18,63 @@ code {
     justify-content: space-between;
     align-items: center;
   }
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    .title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      padding-top: 30px;
+    }
+    .text {
+      font-weight: 600;
+      padding-bottom: 3px;
+    }
+    input {
+      padding: 10px 12px;
+      background-color: #1618230f;
+      border-radius: 3px;
+      border: none;
+      outline: none;
+      margin-bottom: 7px;
+      width: 100%;
+      &:hover {
+        background-color: #dedede;
+      }
+    }
+    .input-hide {
+      position: relative;
+      .eye {
+        position: absolute;
+        right: 10px;
+        top: 17px;
+        cursor: pointer;
+      }
+    }
+    button {
+      padding: 10px;
+      border-radius: 3px;
+      outline: none;
+      border: none;
+      margin-top: 15px;
+      background-color: #1618230f;
+      &.active {
+        background-color: #fe2c55;
+        color: white;
+      }
+    }
+    .button[disabled=disabled],
+    button:disabled {
+      cursor: not-allowed;
+    }
+    .back {
+      margin-top: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+  }
 }

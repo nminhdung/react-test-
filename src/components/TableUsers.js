@@ -108,6 +108,7 @@ const TableUsers = () => {
   const getUsersExport = (event, done) => {
     let result = [];
     if (users && users.length > 0) {
+      //customize header
       result.push(["Id", "Email", "First Name", "Last Name"]);
       users.map((item, index) => {
         let arr = [];
