@@ -13,6 +13,7 @@ code {
 }
 
 .app-container {
+
   .add-new {
     display: flex;
     justify-content: space-between;
@@ -20,6 +21,7 @@ code {
   }
   .login-container {
     display: flex;
+    
     flex-direction: column;
     .title {
       text-align: center;
