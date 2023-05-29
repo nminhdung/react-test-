@@ -16,7 +16,9 @@ const PrivateRoute = (props) => {
       </>
     );
   }
-  //   return <Outlet>{props.children}</Outlet>;
+//C1 return <Outlet/> 
+
+//C2
   return <>{props.children}</>;
 };
 export default PrivateRoute;

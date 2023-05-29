@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import TableUsers from "../components/TableUsers";
 import Login from "../components/Login";
 import PrivateRoute from "./PrivateRoute";
+import { NotFound } from "../components/NotFound";
 
 const AppRoutes = () => {
   return (
@@ -12,10 +13,11 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path='/users' element={<PrivateRoute><TableUsers/></PrivateRoute>}/> */}
-        {/* <PrivateRoute path="/users">
-          <TableUsers />
-        </PrivateRoute> */}
+        {/*C1  <Route path='/users' exact element={<PrivateRoute/>}>
+            <Route exact path="/users" element={<TableUsers/>}/>
+        </Route> */}
+       
+        {/* //C2 */}
         <Route
           path="/users"
           element={
@@ -24,6 +26,7 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </>
   );

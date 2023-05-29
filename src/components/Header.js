@@ -7,13 +7,19 @@ import LogoApp from "../assets/images/logo.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/UserContext";
+import { logout } from "../redux/auth/AuthSlice";
+
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [hideHeader, setHideHeader] = useState(false);
-  const { logout, user } = useContext(UserContext);
+  const user = useSelector((state) => state.auth.user);
+  // console.log(user);
+  // const { logout, user } = useContext(UserContext);
   const handleLogOut = () => {
-    logout();
+    dispatch(logout());
     navigate("/");
     toast.success("Log out success");
   };

@@ -3,9 +3,12 @@ import { loginApi } from "../services/UserService";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import { loginContext } from "../redux/auth/AuthSlice";
+import { useDispatch } from "react-redux";
 const Login = () => {
   const navigate = useNavigate();
-  const { loginContext } = useContext(UserContext);
+  const dispatch = useDispatch();
+  // const { loginContext } = useContext(UserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +22,10 @@ const Login = () => {
     }
     setLoadingData(true);
     //"eve.holt@reqres.in"
-    let res = await loginApi(email, password);
+    let res = await loginApi(email.trim(), password);
     console.log(res);
     if (res && res.token) {
-      loginContext(email, res.token);
+      dispatch(loginContext({ email, token: res.token }));
       navigate("/");
     } else {
       //error
@@ -31,6 +34,12 @@ const Login = () => {
       }
     }
     setLoadingData(false);
+  };
+  const handlePressEnter = (e) => {
+    console.log("Pressed Enter");
+    if (e && e.key === "Enter") {
+      handleLogin();
+    }
   };
   // useEffect(() => {
   //   let token = localStorage.getItem("token");
@@ -54,6 +63,7 @@ const Login = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={(e) => handlePressEnter(e)}
         />
         <i
           className={
